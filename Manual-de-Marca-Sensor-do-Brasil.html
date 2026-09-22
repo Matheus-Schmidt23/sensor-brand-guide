@@ -67,6 +67,39 @@
   }
   .pdf-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(218,41,28,.4); background:var(--red-dark); }
 
+  /* ---------- login gate ---------- */
+  body.gate-locked{ overflow:hidden; }
+  #loginGate{
+    position:fixed; inset:0; z-index:1000;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(218,41,28,.20), transparent 55%),
+      linear-gradient(160deg, #0a0a0a 0%, #020202 60%, #000 100%);
+    display:flex; align-items:center; justify-content:center; padding:32px;
+  }
+  #loginGate[hidden]{ display:none; }
+  .gate-card{ width:100%; max-width:360px; text-align:center; }
+  .gate-card img{ height:56px; width:auto; margin:0 auto 28px; display:block; }
+  .gate-card .gate-tag{ font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:10px; }
+  .gate-card h2{ font-family:'Montserrat',sans-serif; color:#fff; font-size:22px; font-weight:700; text-transform:uppercase; margin-bottom:26px; }
+  .gate-form{ display:flex; flex-direction:column; gap:14px; }
+  .gate-form input[type="password"]{
+    width:100%; box-sizing:border-box; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.18);
+    border-radius:4px; padding:13px 16px; color:#fff; font-family:'Inter',sans-serif; font-size:15px; letter-spacing:.02em;
+    outline:none; transition:border-color .25s ease, background .25s ease;
+  }
+  .gate-form input[type="password"]::placeholder{ color:rgba(255,255,255,.4); }
+  .gate-form input[type="password"]:focus{ border-color:var(--red); background:rgba(255,255,255,.09); }
+  .gate-form input[type="password"].shake{ border-color:var(--red); animation:gateShake .4s ease; }
+  @keyframes gateShake{ 0%,100%{ transform:translateX(0); } 20%{ transform:translateX(-8px); } 40%{ transform:translateX(8px); } 60%{ transform:translateX(-6px); } 80%{ transform:translateX(6px); } }
+  .gate-form button{
+    background:var(--red); color:#fff; border:none; border-radius:4px; padding:13px 16px;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase;
+    cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .gate-form button:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(218,41,28,.35); background:var(--red-dark); }
+  .gate-error{ color:#ee7c6f; font-size:12.5px; margin-top:14px; min-height:16px; font-family:'Inter',sans-serif; opacity:0; transition:opacity .2s ease; }
+  .gate-error.show{ opacity:1; }
+
   /* ---------- hero ---------- */
   .hero{
     background:
@@ -322,7 +355,7 @@
       color-adjust:exact !important;
     }
     html, body{ background:#fff; }
-    nav, .scroll-cue, #llm{ display:none !important; }
+    nav, .scroll-cue, #llm, #loginGate{ display:none !important; }
     .reveal{ opacity:1 !important; transform:none !important; }
 
     section{
@@ -395,7 +428,20 @@
   }
 </style>
 </head>
-<body>
+<body class="gate-locked">
+
+<div id="loginGate">
+  <div class="gate-card">
+    <img src="assets/logos/logo-completo-branco.svg" alt="Sensor do Brasil">
+    <div class="gate-tag">Manual de Identidade Visual</div>
+    <h2>Acesso restrito</h2>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input type="password" id="gatePassword" placeholder="Senha de acesso" autocomplete="off" autofocus>
+      <button type="submit">Entrar</button>
+      <div class="gate-error" id="gateError">Senha incorreta. Tente novamente.</div>
+    </form>
+  </div>
+</div>
 
 <nav>
   <span class="brand"><img src="assets/logos/logo-completo-branco.svg" alt="Sensor do Brasil"></span>
@@ -737,6 +783,42 @@ Manual de marca completo (HTML): Manual-de-Marca-Sensor-do-Brasil.html
 <div class="toast" id="toast">Código copiado!</div>
 
 <script>
+  // Login gate
+  (function(){
+    var GATE_PASSWORD = 'sensor2026';
+    var gate = document.getElementById('loginGate');
+    var form = document.getElementById('gateForm');
+    var input = document.getElementById('gatePassword');
+    var error = document.getElementById('gateError');
+
+    function unlock(){
+      gate.setAttribute('hidden', '');
+      document.body.classList.remove('gate-locked');
+      try{ sessionStorage.setItem('sensorGateOk', '1'); }catch(e){}
+    }
+
+    var alreadyUnlocked = false;
+    try{ alreadyUnlocked = sessionStorage.getItem('sensorGateOk') === '1'; }catch(e){}
+    if(alreadyUnlocked){ unlock(); }
+
+    if(form){
+      form.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        if(input.value === GATE_PASSWORD){
+          error.classList.remove('show');
+          unlock();
+        } else {
+          error.classList.add('show');
+          input.classList.remove('shake');
+          void input.offsetWidth;
+          input.classList.add('shake');
+          input.value = '';
+          input.focus();
+        }
+      });
+    }
+  })();
+
   // Scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
