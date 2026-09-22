@@ -287,10 +287,11 @@
   /* ---------- applications ---------- */
   .app-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:36px 0 44px; }
   .app-card{
-    border-radius:6px; padding:26px 22px; height:150px; display:flex; flex-direction:column; justify-content:space-between;
+    border-radius:6px; padding:24px 22px; height:180px; display:flex; flex-direction:column; justify-content:space-between;
     transition:transform .35s ease, box-shadow .35s ease; cursor:default;
   }
   .app-card:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 20px 40px rgba(0,0,0,.18); }
+  .app-card img{ max-width:80%; max-height:38px; object-fit:contain; align-self:flex-start; }
   .app-card .t{ font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; text-transform:uppercase; }
   .app-card .b{ font-family:'Inter',sans-serif; font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; }
 
@@ -407,7 +408,8 @@
     section{ padding:40px 0 !important; }
     .section h2.title{ margin-bottom:18px !important; }
 
-    .app-card{ height:110px !important; }
+    .app-card{ height:130px !important; }
+    .app-card img{ max-height:28px !important; }
     .app-card .t{ font-size:15px !important; }
     .summary-box{ padding:22px 26px !important; }
     .summary-box p{ font-size:12.5px !important; }
@@ -672,14 +674,17 @@
 
     <div class="app-grid reveal">
       <div class="app-card" style="background:var(--black);">
+        <img src="assets/logos/logo-completo-branco.svg" alt="Logotipo Sensor do Brasil — aplicação branca sobre fundo preto">
         <span class="t" style="color:#fff;">Apresentação institucional</span>
         <span class="b" style="color:var(--red);">Fundo preto + logo branca</span>
       </div>
       <div class="app-card" style="background:var(--offwhite);">
+        <img src="assets/logos/logo-completo-cor.svg" alt="Logotipo Sensor do Brasil — aplicação colorida sobre fundo claro">
         <span class="t" style="color:var(--black);">Datasheet / documento técnico</span>
         <span class="b" style="color:var(--red-dark);">Fundo claro + logo colorida</span>
       </div>
       <div class="app-card" style="background:var(--red);">
+        <img src="assets/logos/logo-completo-branco.svg" alt="Logotipo Sensor do Brasil — aplicação branca sobre fundo vermelho">
         <span class="t" style="color:#fff;">Destaque / CTA</span>
         <span class="b" style="color:#fff;">Fundo vermelho + logo branca</span>
       </div>
