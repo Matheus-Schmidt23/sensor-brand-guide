@@ -106,8 +106,6 @@
     background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 46px);
     pointer-events:none;
   }
-  .hero img{ width:min(320px, 62vw); height:auto; margin-bottom:36px; filter:drop-shadow(0 10px 30px rgba(0,0,0,.5)); transition:transform .5s ease; position:relative; }
-  .hero img:hover{ transform:scale(1.04); }
   .hero .tag{ position:relative; font-family:'Montserrat',sans-serif; font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-bottom:18px; }
   .hero h1{ position:relative; font-size:clamp(36px,6vw,64px); font-weight:600; line-height:1.05; max-width:720px; text-transform:uppercase; letter-spacing:.01em; }
   .hero h1 b{ font-weight:800; color:var(--red); }
@@ -361,7 +359,6 @@
     section:last-of-type{ page-break-after:auto; }
     .hero{ min-height:100vh; padding:56px !important; display:flex !important; flex-direction:column; justify-content:center; align-items:center; }
     .hero::before{ display:none; }
-    .hero img{ width:220px !important; margin-bottom:22px !important; }
     .hero h1{ font-size:46px !important; }
     .hero p.sub{ font-size:15px !important; }
 
@@ -452,7 +449,6 @@
 
 <!-- ============================================================ HERO ============================================================ -->
 <section class="hero">
-  <img src="assets/logos/logo-completo-branco.svg" alt="Sensor do Brasil">
   <div class="tag">Manual de Identidade Visual</div>
   <h1>Para muitos, impossível.<br><b>Para nós, engenharia.</b></h1>
   <p class="sub">Diretrizes essenciais de identidade visual — logotipo, cores, tipografia e regras de aplicação da marca Sensor do Brasil.</p>
