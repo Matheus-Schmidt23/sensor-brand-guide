@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Manual de Marca — Sensor do Brasil</title>
+<link rel="icon" type="image/svg+xml" href="assets/logos/icone-cor.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#DA291C;
+    --red-dark:#A81E14;
+    --gray:#848484;
+    --gray-light:#D9D9D9;
+    --offwhite:#F6F6F6;
+    --white:#FFFFFF;
+    --black:#020202;
+    --ink:#1c1c1c;
+    --muted:#6f6f6f;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; padding:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{ font-family:'Montserrat',sans-serif; margin:0; }
+  p{ line-height:1.7; color:#4a4a4a; margin:0 0 14px 0; }
+  section{ position:relative; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 32px; }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.show{ opacity:1; transform:translateY(0); }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(2,2,2,0.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 32px;
+  }
+  nav .brand{ display:flex; align-items:center; }
+  nav .brand img{ height:34px; width:auto; display:block; }
+  nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
+  nav a{
+    color:#cfcfcf; text-decoration:none; font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px;
+    letter-spacing:.02em; text-transform:uppercase; position:relative; padding:4px 0; transition:color .25s ease; white-space:nowrap;
+  }
+  nav a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--red);
+    transition:width .3s ease;
+  }
+  nav a:hover{ color:#fff; }
+  nav a:hover::after{ width:100%; }
+  nav .pdf-btn{
+    background:var(--red); color:#fff; border:none; border-radius:3px; padding:8px 14px;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.02em; cursor:pointer;
+    text-decoration:none; display:inline-block; text-transform:uppercase; white-space:nowrap;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .pdf-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(218,41,28,.4); background:var(--red-dark); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(218,41,28,.20), transparent 55%),
+      linear-gradient(160deg, #0a0a0a 0%, #020202 60%, #000 100%);
+    color:#fff; min-height:88vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:80px 32px; overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 46px);
+    pointer-events:none;
+  }
+  .hero img{ width:min(320px, 62vw); height:auto; margin-bottom:36px; filter:drop-shadow(0 10px 30px rgba(0,0,0,.5)); transition:transform .5s ease; position:relative; }
+  .hero img:hover{ transform:scale(1.04); }
+  .hero .tag{ position:relative; font-family:'Montserrat',sans-serif; font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-bottom:18px; }
+  .hero h1{ position:relative; font-size:clamp(36px,6vw,64px); font-weight:600; line-height:1.05; max-width:720px; text-transform:uppercase; letter-spacing:.01em; }
+  .hero h1 b{ font-weight:800; color:var(--red); }
+  .hero p.sub{ position:relative; max-width:480px; color:rgba(255,255,255,.78); margin-top:22px; font-size:15px; }
+  .scroll-cue{
+    margin-top:50px; width:26px; height:42px; border:2px solid rgba(255,255,255,.3); border-radius:14px;
+    position:relative;
+  }
+  .scroll-cue::before{
+    content:''; position:absolute; top:8px; left:50%; width:4px; height:8px; background:var(--red);
+    border-radius:2px; transform:translateX(-50%); animation:scrollDot 1.6s infinite;
+  }
+  @keyframes scrollDot{ 0%{ opacity:1; top:8px;} 70%{ opacity:0; top:22px;} 100%{opacity:0; top:8px;} }
+
+  /* ---------- section headers ---------- */
+  .section{ padding:110px 0; }
+  .section.tight{ padding:90px 0; }
+  .kicker{
+    font-family:'Montserrat',sans-serif; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+    font-size:12px; color:var(--red); margin-bottom:10px;
+  }
+  .section h2.title{ font-family:'Montserrat',sans-serif; font-size:clamp(30px,4.4vw,46px); font-weight:700; text-transform:uppercase; letter-spacing:.01em; color:var(--black); margin-bottom:44px; }
+
+  /* ---------- about ---------- */
+  .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:32px; }
+  .stat-card{
+    background:#fff; border:1px solid #ececec; border-radius:6px; padding:28px 26px; transition:transform .3s ease, box-shadow .3s ease;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .stat-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.10); border-color:var(--red); }
+  .stat-card .num{ font-family:'Montserrat',sans-serif; color:var(--red); font-size:38px; font-weight:800; line-height:1; }
+  .stat-card h3{ font-size:15px; margin:8px 0 10px; color:var(--black); font-family:'Montserrat',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.02em; }
+  .stat-card p{ font-size:13px; margin:0; }
+
+  .principles-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:36px; }
+  .principle-card{
+    background:var(--black); color:#eee; border-radius:6px; padding:26px 22px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .principle-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.25); }
+  .principle-card .kick{ font-family:'Montserrat',sans-serif; color:var(--red); font-weight:700; font-size:12px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+  .principle-card p{ color:#cfcfcf; font-size:13px; margin:0; }
+
+  .quote{
+    background:var(--black); color:#f4f4f4; border-radius:8px; padding:40px 44px; margin:36px 0;
+    position:relative; overflow:hidden; border-left:4px solid var(--red);
+  }
+  .quote::after{ content:'"'; position:absolute; right:24px; top:-30px; font-size:180px; color:rgba(218,41,28,.14); font-family:'Montserrat',sans-serif; }
+  .quote p{ color:#f4f4f4; font-family:'Montserrat',sans-serif; font-weight:500; font-size:clamp(20px,2.6vw,27px); line-height:1.35; margin:0; position:relative; z-index:1; text-transform:uppercase; }
+  .quote span{ display:block; margin-top:16px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); font-family:'Montserrat',sans-serif; font-weight:700; }
+
+  .attr-list{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+  .attr-list div{
+    font-family:'Montserrat',sans-serif; border:1.5px solid var(--red); color:var(--red); font-size:13px; font-weight:700;
+    border-radius:30px; padding:7px 18px; letter-spacing:.03em; cursor:default; text-transform:uppercase;
+    transition:background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .attr-list div:hover{ background:var(--red); color:#fff; transform:translateY(-3px); }
+
+  /* ---------- logo section ---------- */
+  .section-dark{ background:var(--black); color:#fff; }
+  .section-dark .kicker{ color:var(--red); }
+  .section-dark h2.title{ color:#fff; }
+  .logo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:44px; }
+  .logo-card{
+    border-radius:8px; padding:28px 20px; height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    transition:transform .35s ease, box-shadow .35s ease;
+    position:relative;
+  }
+  .logo-card img{ max-width:78%; max-height:56px; object-fit:contain; transition:transform .35s ease; }
+  .logo-card.bg-light{ background:#fff; }
+  .logo-card.bg-gray{ background:var(--gray-light); }
+  .logo-card.bg-black{ background:#0d0d0d; border:1px solid rgba(255,255,255,.08); }
+  .logo-card:hover{ transform:translateY(-8px); box-shadow:0 20px 44px rgba(0,0,0,.4); }
+  .logo-card:hover img{ transform:scale(1.08); }
+  .logo-caption{ text-align:center; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; color:var(--black); }
+  .logo-card.bg-black .logo-caption{ color:#cfcfcf; }
+
+  .icon-row{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:44px; }
+  .icon-card{
+    flex:1; min-width:130px; border-radius:8px; padding:20px; height:110px; display:flex; align-items:center; justify-content:center;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .icon-card img{ max-height:52px; max-width:70%; object-fit:contain; }
+  .icon-card:hover{ transform:translateY(-6px); box-shadow:0 16px 34px rgba(0,0,0,.35); }
+
+  .clearspace{ display:flex; align-items:center; gap:40px; flex-wrap:wrap; margin:44px 0; }
+  .clearspace-box{
+    position:relative; border:1.5px dashed rgba(218,41,28,.5); padding:34px; border-radius:6px; background:rgba(255,255,255,.03);
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .clearspace-box:hover{ border-color:var(--red); background:rgba(218,41,28,.06); }
+  .clearspace-box img{ width:190px; height:auto; display:block; }
+  .cs-guide{ position:absolute; }
+  .cs-guide-top{ top:0; left:50%; width:0; height:34px; border-left:1.5px dashed var(--red); transform:translateX(-50%); }
+  .cs-guide-left{ left:0; top:50%; height:0; width:34px; border-top:1.5px dashed var(--red); transform:translateY(-50%); }
+  .cs-label{
+    position:absolute; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; color:var(--red);
+    background:#0d0d0d; padding:1px 6px; border-radius:3px; line-height:1.4; letter-spacing:.03em;
+  }
+  .cs-label-top{ top:10px; left:50%; transform:translate(-50%,0); }
+  .cs-label-left{ left:10px; top:50%; transform:translate(0,-50%); }
+  .clearspace p{ color:#cfcfcf; font-size:13px; max-width:360px; }
+  .clearspace b{ color:#fff; }
+
+  .dd-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .dd-card{ border-radius:6px; padding:24px 26px; background:#0d0d0d; border:1px solid rgba(255,255,255,.07); }
+  .dd-card h4{ font-family:'Montserrat',sans-serif; font-size:16px; margin:0 0 14px 0; text-transform:uppercase; letter-spacing:.03em; }
+  .dd-card.ok h4{ color:#7fce6f; }
+  .dd-card.no h4{ color:#ee7c6f; }
+  .dd-card ul{ margin:0; padding:0; list-style:none; }
+  .dd-card li{
+    font-size:13px; color:#cfcfcf; padding:8px 0 8px 20px; position:relative; border-top:1px solid rgba(255,255,255,.06);
+    transition:padding-left .25s ease, color .25s ease;
+  }
+  .dd-card li:first-child{ border-top:none; }
+  .dd-card li::before{ content:'—'; position:absolute; left:0; color:var(--gray); }
+  .dd-card li:hover{ padding-left:26px; color:#fff; }
+
+  /* ---------- colors ---------- */
+  .swatch-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:16px; }
+  .swatch{
+    border-radius:6px; overflow:hidden; cursor:pointer; position:relative; height:200px;
+    display:flex; align-items:flex-end; transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .swatch:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 18px 36px rgba(0,0,0,.2); }
+  .swatch .info{
+    width:100%; padding:16px 16px; background:linear-gradient(0deg, rgba(0,0,0,.55), transparent 65%);
+  }
+  .swatch .name{ font-family:'Montserrat',sans-serif; font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:.02em; color:#fff; margin-bottom:8px; }
+  .swatch .code{ font-size:10.5px; color:rgba(255,255,255,.9); line-height:1.6; }
+  .swatch .code b{ font-weight:700; opacity:.7; margin-right:4px; }
+  .swatch .copy-hint{
+    position:absolute; top:10px; right:12px; font-size:10px; color:#fff; background:rgba(0,0,0,.4);
+    padding:3px 9px; border-radius:20px; opacity:0; transform:translateY(-4px); transition:opacity .25s ease, transform .25s ease;
+  }
+  .swatch:hover .copy-hint{ opacity:1; transform:translateY(0); }
+  .swatch.light .name, .swatch.light .code{ color:#2b2b2b; }
+  .swatch.light .code b{ opacity:.55; }
+  .swatch.light .copy-hint{ background:rgba(255,255,255,.65); color:#2b2b2b; }
+  .swatch.light .info{ background:linear-gradient(0deg, rgba(255,255,255,.65), transparent 65%); }
+
+  .usage-bar{ display:flex; height:30px; border-radius:4px; overflow:hidden; margin-top:28px; }
+  .usage-bar div{
+    display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.02em;
+    transition:flex-grow .3s ease, filter .3s ease;
+  }
+  .usage-bar div:hover{ filter:brightness(1.12); flex-grow:1.15; }
+
+  /* ---------- typography ---------- */
+  .type-card{
+    border-radius:6px; padding:34px 36px; background:#fff; border:1px solid #ececec; margin-bottom:22px;
+    transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .type-card:hover{ box-shadow:0 18px 40px rgba(0,0,0,.08); transform:translateY(-4px); border-color:var(--red); }
+  .type-card .label-row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; flex-wrap:wrap; gap:6px; }
+  .type-card .name{ font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--red); }
+  .type-card .meta{ font-size:10.5px; color:var(--muted); font-family:monospace; }
+  .type-card .big-sample{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:clamp(28px,4.4vw,42px); color:var(--black); text-transform:uppercase; letter-spacing:.01em; transition:letter-spacing .3s ease; }
+  .type-card:hover .big-sample{ letter-spacing:.02em; }
+  .type-card .body-sample{ font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; color:var(--black); }
+
+  .weight-row{ display:flex; gap:26px; flex-wrap:wrap; margin-top:18px; }
+  .weight-row div{ font-family:'Inter',sans-serif; font-size:14px; color:var(--black); cursor:default; transition:transform .25s ease; }
+  .weight-row div:hover{ transform:translateY(-3px); color:var(--red); }
+  .weight-row div b{ display:block; font-size:9.5px; color:var(--muted); font-weight:700; margin-bottom:3px; letter-spacing:.05em; text-transform:uppercase; }
+
+  .hierarchy-row{
+    display:flex; align-items:baseline; gap:18px; padding:14px 0; border-bottom:1px solid #ececec;
+    transition:padding-left .25s ease, background .25s ease;
+  }
+  .hierarchy-row:hover{ padding-left:10px; background:#fafafa; }
+  .hierarchy-row .tag{ width:56px; flex:none; font-size:10px; font-weight:700; color:var(--muted); font-family:monospace; }
+  .hierarchy-row .sample{ font-family:'Montserrat',sans-serif; color:var(--black); }
+  .hierarchy-row .spec{ margin-left:auto; font-size:10px; color:var(--muted); font-family:monospace; white-space:nowrap; }
+
+  /* ---------- applications ---------- */
+  .app-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:36px 0 44px; }
+  .app-card{
+    border-radius:6px; padding:26px 22px; height:150px; display:flex; flex-direction:column; justify-content:space-between;
+    transition:transform .35s ease, box-shadow .35s ease; cursor:default;
+  }
+  .app-card:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 20px 40px rgba(0,0,0,.18); }
+  .app-card .t{ font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; text-transform:uppercase; }
+  .app-card .b{ font-family:'Inter',sans-serif; font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; }
+
+  .summary-box{
+    background:#fff; border:1px solid #ececec; border-radius:6px; padding:32px 36px; box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .summary-box p{ margin:0 0 8px 0; font-size:13.5px; }
+  .summary-box b{ color:var(--black); }
+
+  /* ---------- LLM export ---------- */
+  .llm-btn{
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:.02em; border:none; border-radius:30px;
+    padding:12px 22px; cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    background:var(--red); color:#fff;
+  }
+  .llm-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(218,41,28,.35); background:var(--red-dark); }
+  .llm-btn.secondary{ background:#fff; color:var(--black); border:1.5px solid #ddd; }
+  .llm-btn.secondary:hover{ background:var(--offwhite); box-shadow:none; transform:translateY(-2px); border-color:var(--red); }
+  #mdOutput{
+    width:100%; min-height:320px; margin-top:14px; padding:20px 22px; border-radius:6px;
+    border:1px solid #ddd; background:#0d0d0d; color:#d7d7d7;
+    font-family:'Menlo','Consolas',monospace; font-size:12px; line-height:1.6; resize:vertical;
+  }
+
+  footer{
+    background:var(--black); color:var(--gray); text-align:center; padding:44px 32px; font-family:'Montserrat',sans-serif; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  footer b{ color:var(--red); }
+
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px); z-index:200;
+    background:var(--black); color:#fff; padding:12px 22px; border-radius:30px; font-size:12.5px; font-weight:600;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  @media(max-width:720px){
+    .stat-grid,.logo-grid,.swatch-grid,.app-grid,.dd-grid,.principles-grid{ grid-template-columns:1fr; }
+    nav ul{ display:none; }
+    .section{ padding:70px 0; }
+    .clearspace{ justify-content:center; }
+    .clearspace-box{ padding:44px; }
+    .clearspace-box img{ width:220px; }
+    .cs-guide-top{ height:44px; }
+    .cs-guide-left{ width:44px; }
+    .icon-row{ flex-direction:column; }
+  }
+
+  @media print{
+    @page{ size:landscape; margin:0; }
+    *{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      color-adjust:exact !important;
+    }
+    html, body{ background:#fff; }
+    nav, .scroll-cue, #llm{ display:none !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+
+    section{
+      page-break-after:always; break-after:page; page-break-inside:avoid;
+      min-height:100vh; box-sizing:border-box;
+      display:flex !important; flex-direction:column; justify-content:center;
+      padding:56px 0 !important;
+    }
+    section:last-of-type{ page-break-after:auto; }
+    .hero{ min-height:100vh; padding:56px !important; display:flex !important; flex-direction:column; justify-content:center; align-items:center; }
+    .hero::before{ display:none; }
+    .hero img{ width:220px !important; margin-bottom:22px !important; }
+    .hero h1{ font-size:46px !important; }
+    .hero p.sub{ font-size:15px !important; }
+
+    .wrap{ padding:0 40px !important; max-width:900px !important; margin:0 auto !important; }
+    .section h2.title{ font-size:36px !important; margin-bottom:26px !important; }
+    p{ font-size:13px !important; line-height:1.55 !important; }
+
+    .stat-card{ padding:20px 22px !important; }
+    .stat-card:hover, .type-card:hover, .app-card:hover, .logo-card:hover, .swatch:hover, .principle-card:hover{
+      transform:none !important; box-shadow:none !important;
+    }
+    .stat-card .num{ font-size:30px !important; }
+    .stat-card h3{ font-size:15px !important; }
+    .stat-card p{ font-size:12px !important; }
+
+    .quote{ padding:26px 30px !important; margin:24px 0 !important; }
+    .quote::after{ display:none; }
+    .quote p{ font-size:20px !important; }
+
+    .attr-list div{ font-size:11px !important; }
+
+    .logo-card{ height:130px !important; }
+    .logo-caption{ font-size:11px !important; }
+
+    .clearspace-box img{ width:140px !important; }
+    .clearspace-box{ padding:24px !important; }
+    .cs-guide-top{ height:24px !important; }
+    .cs-guide-left{ width:24px !important; }
+    .clearspace p{ font-size:12px !important; }
+
+    .dd-card{ padding:18px 20px !important; }
+    .dd-card li{ font-size:12px !important; }
+
+    .swatch{ height:150px !important; }
+    .usage-bar{ height:24px !important; }
+
+    .type-card{ padding:22px 26px !important; }
+    .type-card .big-sample{ font-size:34px !important; }
+    .type-card .body-sample{ font-size:15px !important; }
+    .hierarchy-row .sample{ font-size:16px !important; }
+    .hierarchy-row{ padding:7px 0 !important; }
+    .hierarchy-block{ margin-top:20px !important; page-break-inside:avoid; }
+    .type-card{ margin-bottom:12px !important; }
+    section{ padding:40px 0 !important; }
+    .section h2.title{ margin-bottom:18px !important; }
+
+    .app-card{ height:110px !important; }
+    .app-card .t{ font-size:15px !important; }
+    .summary-box{ padding:22px 26px !important; }
+    .summary-box p{ font-size:12.5px !important; }
+
+    footer{
+      min-height:100vh !important; box-sizing:border-box !important; padding:56px !important;
+      display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important;
+      page-break-before:always !important; font-size:14px !important;
+    }
+    footer img{ height:84px !important; margin-bottom:20px !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand"><img src="assets/logos/logo-completo-branco.svg" alt="Sensor do Brasil"></span>
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#logotipo">Logotipo</a></li>
+    <li><a href="#cores">Cores</a></li>
+    <li><a href="#tipografia">Tipografia</a></li>
+    <li><a href="#aplicacoes">Aplicações</a></li>
+    <li><a href="#llm">Para IA</a></li>
+    <li><a href="#" class="pdf-btn" onclick="window.print()">Baixar PDF</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <img src="assets/logos/logo-completo-branco.svg" alt="Sensor do Brasil">
+  <div class="tag">Manual de Identidade Visual</div>
+  <h1>Para muitos, impossível.<br><b>Para nós, engenharia.</b></h1>
+  <p class="sub">Diretrizes essenciais de identidade visual — logotipo, cores, tipografia e regras de aplicação da marca Sensor do Brasil.</p>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- ============================================================ SOBRE ============================================================ -->
+<section class="section" id="sobre">
+  <div class="wrap">
+    <div class="kicker reveal">01 — Sobre a marca</div>
+    <h2 class="title reveal">Quem é a Sensor do Brasil</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card reveal">
+        <div class="num">1995</div>
+        <h3>Ano de fundação</h3>
+        <p>Mais de 30 anos de história em automação industrial, já reconhecida como o maior distribuidor de grandes marcas da América Latina.</p>
+      </div>
+      <div class="stat-card reveal">
+        <div class="num">8+</div>
+        <h3>Marcas parceiras globais</h3>
+        <p>Distribuidora oficial de líderes mundiais como Banner Engineering, Turck, Phoenix Contact, ABB e Zebra Technologies.</p>
+      </div>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle-card reveal">
+        <div class="kick">Missão</div>
+        <p>Fornecer soluções de excelência técnica para automação de fábricas e processos.</p>
+      </div>
+      <div class="principle-card reveal">
+        <div class="kick">Visão</div>
+        <p>Ser uma empresa competitiva e com atuação abrangente, buscando constantemente as tecnologias mais inovadoras do mercado.</p>
+      </div>
+      <div class="principle-card reveal">
+        <div class="kick">Valores</div>
+        <p>Integridade, Inovação e Proatividade em cada solução entregue.</p>
+      </div>
+    </div>
+
+    <div class="quote reveal">
+      <p>Para muitos, impossível. Para nós, engenharia.</p>
+      <span>Posicionamento — Sensor do Brasil</span>
+    </div>
+
+    <p class="reveal"><b style="color:var(--black)">O que a marca representa:</b> especializada em automação industrial e novas tecnologias, a Sensor do Brasil entrega produtos e serviços de altíssima qualidade para setores como automotivo, alimentício, farmacêutico, logístico, portuário e rodoviário. Com laboratórios técnicos, treinamento e logística próprios, une know-how de engenharia a um portfólio robusto para levar a Indústria 4.0 a fábricas e processos em todo o Brasil.</p>
+
+    <div class="attr-list reveal">
+      <div>Técnica</div><div>Direta</div><div>Confiável</div><div>Precisa</div><div>Inovadora</div><div>Orientada a resultados</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ LOGOTIPO ============================================================ -->
+<section class="section section-dark" id="logotipo">
+  <div class="wrap">
+    <div class="kicker reveal">02 — Logotipo</div>
+    <h2 class="title reveal">Versões do logotipo</h2>
+
+    <div class="logo-grid reveal">
+      <div class="logo-card bg-light">
+        <img src="assets/logos/logo-completo-cor.svg" alt="Logotipo Sensor do Brasil — versão colorida">
+        <span class="logo-caption">Colorida — fundos claros</span>
+      </div>
+      <div class="logo-card bg-gray">
+        <img src="assets/logos/logo-completo-preto.svg" alt="Logotipo Sensor do Brasil — versão preta">
+        <span class="logo-caption">Preta — impressos em 1 cor</span>
+      </div>
+      <div class="logo-card bg-black">
+        <img src="assets/logos/logo-completo-branco.svg" alt="Logotipo Sensor do Brasil — versão branca">
+        <span class="logo-caption">Branca — fundos escuros/fotos</span>
+      </div>
+    </div>
+
+    <p class="reveal" style="color:#cfcfcf; font-size:13px; max-width:640px; margin-bottom:20px;">O logotipo é composto pelo símbolo e pelo lettering <b style="color:#fff;">SENSOR</b> (vermelho) + <b style="color:#fff;">DO BRASIL</b> (cinza). Em aplicações compactas — ícones de app, avatares e favicons — utilize apenas o símbolo, nas mesmas três versões de cor.</p>
+
+    <div class="icon-row reveal">
+      <div class="icon-card bg-light" style="background:#fff;"><img src="assets/logos/icone-cor.svg" alt="Símbolo Sensor do Brasil — colorido"></div>
+      <div class="icon-card bg-gray" style="background:var(--gray-light);"><img src="assets/logos/icone-preto.svg" alt="Símbolo Sensor do Brasil — preto"></div>
+      <div class="icon-card bg-black" style="background:#0d0d0d; border:1px solid rgba(255,255,255,.08);"><img src="assets/logos/icone-branco.svg" alt="Símbolo Sensor do Brasil — branco"></div>
+    </div>
+
+    <div class="clearspace reveal">
+      <div class="clearspace-box">
+        <div class="cs-guide cs-guide-top"></div>
+        <div class="cs-guide cs-guide-left"></div>
+        <div class="cs-label cs-label-top">X</div>
+        <div class="cs-label cs-label-left">X</div>
+        <img src="assets/logos/logo-completo-cor.svg" alt="Área de respiro do logotipo Sensor do Brasil">
+      </div>
+      <p>O respiro mínimo (<b>X</b>) corresponde à altura da palavra "SENSOR" no logotipo. Nenhum elemento — texto, imagem ou borda — deve invadir essa área. Tamanho mínimo recomendado: <b>32px</b> em telas e <b>20mm</b> em impressos.</p>
+    </div>
+
+    <div class="dd-grid reveal">
+      <div class="dd-card ok">
+        <h4>Faça</h4>
+        <ul>
+          <li>Use os arquivos vetoriais oficiais (SVG, EPS, AI ou PDF)</li>
+          <li>Mantenha o respiro mínimo ao redor do logotipo</li>
+          <li>Use a versão branca sobre fundos escuros ou fotos</li>
+        </ul>
+      </div>
+      <div class="dd-card no">
+        <h4>Evite</h4>
+        <ul>
+          <li>Distorcer, inclinar, rotacionar ou recortar o logotipo</li>
+          <li>Alterar as cores oficiais ou aplicar efeitos/gradientes</li>
+          <li>Aplicar sobre fundos de baixo contraste ou imagens poluídas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CORES ============================================================ -->
+<section class="section" id="cores">
+  <div class="wrap">
+    <div class="kicker reveal">03 — Paleta de cores</div>
+    <h2 class="title reveal">Cores da marca</h2>
+
+    <p class="reveal" style="font-size:12.5px; color:var(--muted); margin-bottom:20px;">Passe o mouse e clique em uma cor para copiar o código hexadecimal.</p>
+
+    <div class="swatch-grid reveal">
+      <div class="swatch" data-hex="#DA291C" style="background:#DA291C; outline:3px solid #fff; outline-offset:-3px;">
+        <span class="copy-hint">principal · clique p/ copiar</span>
+        <div class="info"><div class="name">Vermelho Sensor</div><div class="code"><b>HEX</b>#DA291C<br><b>RGB</b>218, 41, 28<br><b>CMYK</b>0, 81, 87, 15</div></div>
+      </div>
+      <div class="swatch" data-hex="#A81E14" style="background:#A81E14;">
+        <span class="copy-hint">clique p/ copiar</span>
+        <div class="info"><div class="name">Vermelho escuro</div><div class="code"><b>HEX</b>#A81E14<br><b>RGB</b>168, 30, 20<br><b>CMYK</b>0, 82, 88, 34</div></div>
+      </div>
+      <div class="swatch" data-hex="#020202" style="background:#020202;">
+        <span class="copy-hint">clique p/ copiar</span>
+        <div class="info"><div class="name">Preto Sensor</div><div class="code"><b>HEX</b>#020202<br><b>RGB</b>2, 2, 2<br><b>CMYK</b>0, 0, 0, 99</div></div>
+      </div>
+      <div class="swatch" data-hex="#848484" style="background:#848484;">
+        <span class="copy-hint">clique p/ copiar</span>
+        <div class="info"><div class="name">Cinza Sensor</div><div class="code"><b>HEX</b>#848484<br><b>RGB</b>132, 132, 132<br><b>CMYK</b>0, 0, 0, 48</div></div>
+      </div>
+      <div class="swatch light" data-hex="#D9D9D9" style="background:#D9D9D9;">
+        <span class="copy-hint">clique p/ copiar</span>
+        <div class="info"><div class="name">Cinza claro</div><div class="code"><b>HEX</b>#D9D9D9<br><b>RGB</b>217, 217, 217<br><b>CMYK</b>0, 0, 0, 15</div></div>
+      </div>
+      <div class="swatch light" data-hex="#F6F6F6" style="background:#F6F6F6;">
+        <span class="copy-hint">clique p/ copiar</span>
+        <div class="info"><div class="name">Branco-gelo</div><div class="code"><b>HEX</b>#F6F6F6<br><b>RGB</b>246, 246, 246<br><b>CMYK</b>0, 0, 0, 4</div></div>
+      </div>
+    </div>
+
+    <div class="usage-bar reveal">
+      <div style="background:#F6F6F6; color:#5a5a5a; flex-grow:0.55;">Neutros — 55%</div>
+      <div style="background:#DA291C; flex-grow:0.30;">Vermelho — 30%</div>
+      <div style="background:#020202; flex-grow:0.15;">Preto/Contraste — 15%</div>
+    </div>
+    <p class="reveal" style="margin-top:16px;">Os neutros (preto, cinza e branco-gelo) formam a base de fundos, textos e planos técnicos. O vermelho é a cor de destaque — usada em CTAs, ícones, alertas e elementos de ênfase. O vermelho escuro reforça contraste em estados de interação (hover/pressed).</p>
+  </div>
+</section>
+
+<!-- ============================================================ TIPOGRAFIA ============================================================ -->
+<section class="section" id="tipografia" style="background:#fff;">
+  <div class="wrap">
+    <div class="kicker reveal">04 — Tipografia</div>
+    <h2 class="title reveal">Sistema tipográfico</h2>
+
+    <div class="type-card reveal">
+      <div class="label-row"><span class="name">Títulos, rótulos &amp; destaques — Montserrat</span><span class="meta">Google Fonts · pesos 400–900</span></div>
+      <div class="big-sample">Automação Industrial 4.0</div>
+      <div class="weight-row">
+        <div><b>REGULAR 400</b><span style="font-weight:400; font-family:'Montserrat',sans-serif;">AaBbCcDdEe</span></div>
+        <div><b>SEMIBOLD 600</b><span style="font-weight:600; font-family:'Montserrat',sans-serif;">AaBbCcDdEe</span></div>
+        <div><b>BOLD 700</b><span style="font-weight:700; font-family:'Montserrat',sans-serif;">AaBbCcDdEe</span></div>
+        <div><b>BLACK 900</b><span style="font-weight:900; font-family:'Montserrat',sans-serif;">AaBbCcDdEe</span></div>
+      </div>
+    </div>
+
+    <div class="type-card reveal">
+      <div class="label-row"><span class="name">Textos corridos &amp; interface — Inter</span><span class="meta">Google Fonts · pesos 300–800</span></div>
+      <div class="body-sample">Soluções de excelência técnica para automação de fábricas e processos, com engenharia de precisão e mais de 30 anos de experiência.</div>
+      <div class="weight-row">
+        <div><b>LIGHT 300</b><span style="font-weight:300;">AaBbCcDdEe</span></div>
+        <div><b>REGULAR 400</b><span style="font-weight:400;">AaBbCcDdEe</span></div>
+        <div><b>SEMIBOLD 600</b><span style="font-weight:600;">AaBbCcDdEe</span></div>
+        <div><b>BOLD 700</b><span style="font-weight:700;">AaBbCcDdEe</span></div>
+      </div>
+    </div>
+
+    <div class="hierarchy-block reveal" style="margin-top:44px;">
+      <div class="hierarchy-row">
+        <span class="tag">H1</span><span class="sample" style="font-size:34px; font-weight:700; text-transform:uppercase;">Título principal</span><span class="spec">Montserrat 700 · 34–48px</span>
+      </div>
+      <div class="hierarchy-row">
+        <span class="tag">H2</span><span class="sample" style="font-size:24px; font-weight:700; text-transform:uppercase;">Subtítulo de seção</span><span class="spec">Montserrat 700 · 22–28px</span>
+      </div>
+      <div class="hierarchy-row">
+        <span class="tag">H3</span><span class="sample" style="font-size:15px; font-weight:700; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:.03em;">Rótulo / categoria</span><span class="spec">Montserrat 700 · 13–15px</span>
+      </div>
+      <div class="hierarchy-row">
+        <span class="tag">BODY</span><span class="sample" style="font-size:14px; font-weight:400; font-family:'Inter',sans-serif;">Texto corrido e parágrafos técnicos.</span><span class="spec">Inter 400 · 14–16px</span>
+      </div>
+      <div class="hierarchy-row">
+        <span class="tag">CTA</span><span class="sample" style="font-size:13px; font-weight:700; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:.04em; color:var(--red);">Solicite uma solução</span><span class="spec">Montserrat 700 · caixa alta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ APLICAÇÕES ============================================================ -->
+<section class="section" id="aplicacoes">
+  <div class="wrap">
+    <div class="kicker reveal">05 — Tom de voz &amp; aplicações</div>
+    <h2 class="title reveal">Como a marca se expressa</h2>
+
+    <div class="stat-grid reveal">
+      <div class="stat-card"><h3>Técnica</h3><p>Vocabulário preciso de engenharia, sem simplificar demais nem soar genérico.</p></div>
+      <div class="stat-card"><h3>Direta</h3><p>Frases curtas e objetivas — como no posicionamento "Para nós, engenharia."</p></div>
+      <div class="stat-card"><h3>Confiável</h3><p>Fala com a autoridade de quem tem 30 anos de história e marcas globais como parceiras.</p></div>
+      <div class="stat-card"><h3>Orientada a resultados</h3><p>Sempre conecta tecnologia a ganhos reais de produtividade, qualidade e rastreabilidade.</p></div>
+    </div>
+
+    <div class="app-grid reveal">
+      <div class="app-card" style="background:var(--black);">
+        <span class="t" style="color:#fff;">Apresentação institucional</span>
+        <span class="b" style="color:var(--red);">Fundo preto + logo branca</span>
+      </div>
+      <div class="app-card" style="background:var(--offwhite);">
+        <span class="t" style="color:var(--black);">Datasheet / documento técnico</span>
+        <span class="b" style="color:var(--red-dark);">Fundo claro + logo colorida</span>
+      </div>
+      <div class="app-card" style="background:var(--red);">
+        <span class="t" style="color:#fff;">Destaque / CTA</span>
+        <span class="b" style="color:#fff;">Fundo vermelho + logo branca</span>
+      </div>
+    </div>
+
+    <div class="summary-box reveal">
+      <p><b>Logotipo:</b> colorida sobre fundos claros; branca sobre fundos escuros/fotos; preta para impressos em 1 cor.</p>
+      <p><b>Cores:</b> vermelho como destaque (30%), neutros como base (55%), preto/vermelho escuro para contraste (15%).</p>
+      <p><b>Tipografia:</b> Montserrat para títulos e rótulos, Inter para textos e interface.</p>
+      <p style="margin-bottom:0;"><b>Voz:</b> técnica, direta, confiável, orientada a resultados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ EXPORTAR PARA LLM ============================================================ -->
+<script type="text/markdown" id="ai-brand-context"># Sensor do Brasil — Brand Context (para uso por IA)
+
+> Referência estruturada da marca para gerar conteúdo, construir ferramentas ou desenhar peças consistentes com a identidade da Sensor do Brasil.
+
+## 1. Marca
+- Nome: Sensor do Brasil
+- Categoria: distribuidora e integradora especializada em automação industrial e novas tecnologias (Indústria 4.0)
+- Fundação: 1995 — mais de 30 anos de história, já reconhecida como o maior distribuidor de grandes marcas da América Latina
+- Posicionamento: "Para muitos, impossível. Para nós, engenharia."
+- Missão: fornecer soluções de excelência técnica para automação de fábricas e processos
+- Visão: ser uma empresa competitiva e com atuação abrangente, buscando constantemente as tecnologias mais inovadoras do mercado
+- Valores: Integridade, Inovação e Proatividade
+- Parceiras/marcas distribuídas: Banner Engineering, Turck, Adaptive Recognition, Fortress Interlocks, Phoenix Contact, Zebra Technologies, Famatel, ABB
+- Setores atendidos: Aeroportos e Portos, Automotiva, Alimentícia, Bebidas, Logística e Distribuição, Embalagens, Farmacêutica, Rodovias
+- Linhas de produto: Baixa Tensão, Conectividade, Iluminação e Sinalização, Indústria 4.0 (Smart Solutions), RFID, Sensores, Segurança, Visão, Wireless
+- Atributos de marca: Técnica, Direta, Confiável, Precisa, Inovadora, Orientada a resultados
+
+## 2. Tom de voz
+- Técnica: vocabulário preciso de engenharia, sem simplificar demais nem soar genérico
+- Direta: frases curtas e objetivas, como no posicionamento "Para nós, engenharia."
+- Confiável: fala com a autoridade de quem tem 30 anos de história e marcas globais como parceiras
+- Orientada a resultados: sempre conecta tecnologia a ganhos reais de produtividade, qualidade e rastreabilidade
+
+## 3. Logotipo
+- Composição: símbolo + lettering "SENSOR" (vermelho) + "DO BRASIL" (cinza)
+- Versões: colorida (uso padrão sobre fundos claros), preta (impressos em 1 cor), branca (fundos escuros ou fotos)
+- Versão compacta: apenas o símbolo, nas mesmas três cores, para ícones e avatares
+- Respiro mínimo: margem livre em todos os lados igual à altura da palavra "SENSOR" no logotipo
+- Tamanho mínimo: 32px em telas / 20mm em impressos
+- Faça: usar os arquivos vetoriais oficiais; manter o respiro mínimo; usar a versão branca sobre fundos escuros
+- Evite: distorcer, rotacionar ou recolorir o logotipo; aplicar sobre fundos de baixo contraste
+
+## 4. Paleta de cores
+| Papel | Nome | Hex | Uso |
+|---|---|---|---|
+| Principal | Vermelho Sensor | #DA291C | ~30% — CTAs, destaques, ícones |
+| Contraste/hover | Vermelho escuro | #A81E14 | estados de interação, apoio em títulos |
+| Neutra/escura | Preto Sensor | #020202 | fundos escuros, textos, logotipo mono |
+| Neutra | Cinza Sensor | #848484 | elemento secundário do símbolo, texto de apoio |
+| Neutra | Cinza claro | #D9D9D9 | bordas, divisores |
+| Neutra | Branco-gelo | #F6F6F6 | fundos claros, logotipo reverso |
+
+Proporção de uso: ~55% neutros, ~30% vermelho principal, ~15% preto/vermelho escuro para contraste.
+
+## 5. Tipografia
+- Títulos, rótulos e destaques: Montserrat (pesos 400–900)
+- Texto corrido e interface: Inter (pesos 300–800)
+- Hierarquia:
+  - H1: Montserrat 700, caixa alta, 34–48px
+  - H2: Montserrat 700, caixa alta, 22–28px
+  - H3 / rótulo: Montserrat 700, caixa alta, 13–15px
+  - Corpo de texto: Inter 400, 14–16px
+  - CTA: Montserrat 700, caixa alta
+
+## 6. Fonte
+Manual de marca completo (HTML): Manual-de-Marca-Sensor-do-Brasil.html
+</script>
+
+<section class="section" id="llm" style="background:#fff;">
+  <div class="wrap">
+    <div class="kicker reveal">06 — Para IA &amp; desenvolvedores</div>
+    <h2 class="title reveal">Exportar contexto para LLM</h2>
+    <p class="reveal">Gere um bloco em Markdown com toda a identidade da marca — cores, tipografia, logotipo e tom de voz — pronto para ser usado como contexto por outras IAs na criação de ferramentas e conteúdos.</p>
+    <div class="reveal" style="display:flex; gap:12px; flex-wrap:wrap; margin:22px 0 4px;">
+      <button id="genMdBtn" class="llm-btn">Gerar .md para LLM</button>
+      <button id="copyMdBtn" class="llm-btn secondary" style="display:none;">Copiar texto</button>
+      <button id="downloadMdBtn" class="llm-btn secondary" style="display:none;">Baixar .md</button>
+    </div>
+    <textarea id="mdOutput" readonly style="display:none;"></textarea>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logos/icone-cor.svg" alt="Sensor do Brasil" style="height:56px; width:auto; display:block; margin:0 auto 20px;">
+  Manual de Marca · Versão 1.0 · 2026
+</footer>
+
+<div class="toast" id="toast">Código copiado!</div>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Copy hex on swatch click
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'), 1800);
+  }
+  document.querySelectorAll('.swatch').forEach(sw=>{
+    sw.addEventListener('click', ()=>{
+      const hex = sw.getAttribute('data-hex');
+      const done = ()=>showToast(hex + ' copiado!');
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(hex).then(done).catch(done);
+      } else { done(); }
+    });
+  });
+
+  // Generate / copy / download the AI-friendly brand markdown
+  const genMdBtn = document.getElementById('genMdBtn');
+  const copyMdBtn = document.getElementById('copyMdBtn');
+  const downloadMdBtn = document.getElementById('downloadMdBtn');
+  const mdOutput = document.getElementById('mdOutput');
+  const mdSource = document.getElementById('ai-brand-context');
+
+  if(genMdBtn){
+    genMdBtn.addEventListener('click', ()=>{
+      const md = mdSource.textContent.trim();
+      mdOutput.value = md;
+      mdOutput.style.display = 'block';
+      copyMdBtn.style.display = 'inline-block';
+      downloadMdBtn.style.display = 'inline-block';
+      mdOutput.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+  }
+  if(copyMdBtn){
+    copyMdBtn.addEventListener('click', ()=>{
+      const done = ()=>showToast('Markdown copiado!');
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(mdOutput.value).then(done).catch(done);
+      } else {
+        mdOutput.select();
+        document.execCommand('copy');
+        done();
+      }
+    });
+  }
+  if(downloadMdBtn){
+    downloadMdBtn.addEventListener('click', ()=>{
+      const blob = new Blob([mdOutput.value], { type:'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'sensor-do-brasil-brand-context.md';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  // Smooth-scroll nav (fallback / offset for sticky nav)
+  document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (ev)=>{
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){
+        ev.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 60, behavior:'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
